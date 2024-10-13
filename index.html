@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Restaurant - Food Order System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Check if the user is logged in
+        if (!localStorage.getItem('loggedInUser')) {
+            alert('Please log in first!');
+            window.location.href = "login.html";  // Redirect to login page if not logged in
+        }
+    </script>
+    
+</head>
+<body>
+
+    <!-- Order System -->
+    <header>
+        <h1>Welcome to Fancy Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#order">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Menu Section -->
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div class="menu-item" data-name="Burger" data-price="225.29">
+                <img src="Burger.jpg" alt="Burger">
+                <h3>Burger</h3>
+                <p>BDT 225.29</p>
+                <button onclick="addToCart('Burger', 225.29)">Add to Order</button>
+            </div>
+
+            <div class="menu-item" data-name="Pizza" data-price="750.33">
+                <img src="pizza.jpg" alt="Pizza">
+                <h3>Pizza</h3>
+                <p>BDT 750.33</p>
+                <button onclick="addToCart('Pizza', 750.33)">Add to Order</button>
+            </div>
+
+            <div class="menu-item" data-name="Ramen" data-price="470.77">
+                <img src="ramen.jpg" alt="Ramen">
+                <h3>Ramen</h3>
+                <p>BDT 470.77</p>
+                <button onclick="addToCart('Ramen', 470.77)">Add to Order</button>
+            </div>
+
+            <!-- Add more menu items as needed -->
+        </section>
+
+        <!-- Order Summary Section -->
+        <section id="order">
+            <h2>Your Order</h2>
+            <table id="order-summary">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="orderItems">
+                    <!-- Order items will be dynamically added here -->
+                </tbody>
+            </table>
+            <div class="total-section">
+                <h3>Total: BDT <span id="totalPrice">0.00</span></h3>
+                <button onclick="checkout()">Checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
